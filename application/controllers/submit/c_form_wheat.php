@@ -6,154 +6,106 @@ class C_Form_Wheat extends MY_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->model("companyproduction",'cp');
 	}
 
-	public function form_internalFort_A1() {
-		$this -> load -> model('models_wheat/M_Wheat_InternalFort_A1');
-		$this -> M_Wheat_InternalFort_A1 -> addRecord();
-
-		if ($this -> M_Wheat_InternalFort_A1 -> response = 'ok') {
-			//notify user of success
-			$data['form_id'] = "";
-			$data['form'] = '<p><b>' . $this -> M_Wheat_InternalFort_A1 -> rowsInserted . '</b> record(s) submitted successfully in 
-			approximately <b>' . $this -> M_Wheat_InternalFort_A1 -> executionTime . '</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-
-		} else {
-			//notify user of error/failure
+    public function productionWheat($id) 
+	{
+		if ($this -> input -> post()) 
+		{//check if a post was made
+			if($_POST['wheatFactory'])
+			{
+				$_POST['wheatFactory1']=$_POST['wheatFactory'];
+			}
+			$item_id=($_POST['item_id']!=="")? $_POST['item_id']:"";
 		}
-
-	}
-
-	public function form_internalFort_A2() {
-		$this -> load -> model('models_wheat/M_Wheat_InternalFort_A2');
-		$this -> M_Wheat_InternalFort_A2 -> addRecord();
-
-		if ($this -> M_Wheat_InternalFort_A2 -> response = 'ok') {
-			//notify user of success
-			$data['form_id'] = "";
-			$data['form'] = '<p><b>' . $this -> M_Wheat_InternalFort_A2 -> rowsInserted . '</b> record(s) submitted successfully in 
-			approximately <b>' . $this -> M_Wheat_InternalFort_A2 -> executionTime . '</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-
-		} else {
-			//notify user of error/failure
-		}
-
-	}
-
-	public function form_internalFort_B1() {
-		$this -> load -> model('models_wheat/M_Wheat_InternalFort_B1');
-		$this -> M_Wheat_InternalFort_B1 -> addRecord($this->session->userdata('affiliation'));
-
-		if ($this -> M_Wheat_InternalFort_B1 -> response = 'ok') {
-			//notify user of success
-			$data['form_id'] = "";
-			$data['form'] = '<p><b>' . $this -> M_Wheat_InternalFort_B1 -> rowsInserted . '</b> record(s) submitted successfully in 
-			approximately <b>' . $this -> M_Wheat_InternalFort_B1 -> executionTime . '</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-
-		} else {
-			//notify user of error/failure
-		}
-
-	}
-
-	public function form_internalFort_B2() {
-		$this -> load -> model('models_wheat/M_Wheat_InternalFort_B2');
-		$this -> M_Wheat_InternalFort_B2 -> addRecord($this->session->userdata('affiliation'));
-
-		if ($this -> M_Wheat_InternalFort_B2 -> response = 'ok') {
-			//notify user of success
-			$data['form_id'] = "";
-			$data['form'] = '<p><b>' . $this -> M_Wheat_InternalFort_B2 -> rowsInserted . '</b> record(s) submitted successfully in 
-			approximately <b>' . $this -> M_Wheat_InternalFort_B2 -> executionTime . '</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-
-		} else {
-			//notify user of error/failure
-		}
-
-	}
-
-	public function form_internalFort_C1() {
-		$this -> load -> model('models_wheat/M_Wheat_InternalFort_C1');
-		$this -> M_Wheat_InternalFort_C1 -> addRecord($this->session->userdata('affiliation'));
-
-		if ($this -> M_Wheat_InternalFort_C1 -> response = 'ok') {
-			//notify user of success
-			$data['form_id'] = "";
-			$data['form'] = '<p><b>' . $this -> M_Wheat_InternalFort_C1 -> rowsInserted . '</b> record(s) submitted successfully in 
-			approximately <b>' . $this -> M_Wheat_InternalFort_C1 -> executionTime . '</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-
-		} else {
-			//notify user of error/failure
-		}
-
-	}
-
-public function form_externalFort_B1(){
-		$this->load->model('models_wheat/M_Wheat_ExternalFort_B1');
-		$this->M_Wheat_ExternalFort_B1->addRecord();
 		
+		if($item_id==="")
+		{
+		$rec_count=$this->checkDB("wheatFactory1","wheat_productiontable");
 		
-		
-		if($this->M_Wheat_ExternalFort_B1->response=='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->M_Wheat_ExternalFort_B1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_Wheat_ExternalFort_B1->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
+		if($rec_count==0)
+		{
+		$frm_id="productionWheat";
+	    $this -> load -> model('models_wheat/m_wheat_production');
+		$this -> m_wheat_production -> addRecord($this -> session -> userdata('affiliation'));
+//
+		if($this->m_wheat_production->response=='ok') {
+			//notify user of success		
+			if($id==1)	
+			{
+			  redirect('addproductionwheat');
+			}
+			else
+			{
+				/*$msg='Data submitted successfully!!';
+				$newdata = array('update_msg' =>$msg);
+		        $this -> session -> set_userdata($newdata);	*/	
+				redirect('prodWheat');
+			}
 			
-			
-		}else{
-			//notify user of error/failure
+		} 
+		else 
+		{
+		//notify user of error/failure
 		}
+	}
+	else
+	{
+		$newdata = array('update_msg' =>$this->update_e_msg);
+		$this -> session -> set_userdata($newdata);		  
+		redirect('addproductionwheat');
+	}
+	}
+	else
+	{
+		$update_data=array(
+		"opening_balance" =>$_POST["oBal_1"],
+		"qty_delivered" =>$_POST["qtyDel_1"],
+		"qty_rejected" =>$_POST["reject_1"],
+		"supplier" =>$_POST["pSup_1"],
+		"qty_issued" =>$_POST["QI_1"],
+		"closing_balance" =>$_POST["CBAL_1"],
+		"dosage_rate" =>$_POST["DRM_1"],
+		"theoretical_prod" =>$_POST["tProdM_1"],
+		"actual_prod" =>$_POST["aProd_1"],
+		"production_unfort" =>$_POST["prodU_1"],
+		"exp_fort" =>$_POST["fortExp_1"],
+		"exp_unfort" =>$_POST["salexExpUn_1"],
+		"fort_sales" =>$_POST["sales_1"],
+		"edited_by" =>$this -> session -> userdata('email'),
+		"time_edited" =>date('Y-m-d'),
+		);
+		$result= $this->cp->update("wheat_productiontable",$update_data,'WheatProductionID',$item_id);
+		redirect('prodWheat');
 		
-	}//close form_externalFort_B1()
+	}
+
+	}
 	
-	public function form_externalFort_B2(){
-		$this->load->model('models_wheat/M_Wheat_ExternalFort_B2');
-		$this->M_Wheat_ExternalFort_B2->addRecord($this->session->userdata('affiliation'));
-		
-		if($this->M_Wheat_ExternalFort_B2->response=='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->M_Wheat_ExternalFort_B2->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_Wheat_ExternalFort_B2->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
+	public function fortifiedWheat_market($id) 
+	{	
+	    $this -> load -> model('models_wheat/m_wheat_market');
+		$this -> m_wheat_market -> addRecord($this -> session -> userdata('affiliation'));
+		if($this->m_wheat_market->response=='ok') 
+		{
+			//notify user of success		
+			if($id==1)	
+			{
+			  $newdata = array('link_id' =>"Market_level_wheat_li");
+			  $this -> session -> set_userdata($newdata);		  
+			  redirect('c_redirect/addEntry');
+			}
+			else
+			{
+				$this->data['form_id'] ="";
+		    	$this->data['form'] = '<p><b>' . $this -> m_wheat_market -> rowsInserted . '</b> record(s) submitted successfully in approximately <b>' . $this -> m_wheat_market -> executionTime . '</b> seconds.</p>';
+				$this->load_template_view();
+			}			
+		} 
+		else 
+		{
+	//		//notify user of error/failure
 		}
-		
-	}//close form_externalFort_B1()
-
-		public function form_externalFort_B3(){
-		$this->load->model('models_wheat/M_Wheat_ExternalFort_B3');
-		$this->M_Wheat_ExternalFort_B3->addRecord($this->session->userdata('affiliation'));
-		
-		if($this->M_Wheat_ExternalFort_B3->response=='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->M_Wheat_ExternalFort_B3->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_Wheat_ExternalFort_B3->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
-		}
-		
-	}//close form_externalFort_B1()
+	}	
 }

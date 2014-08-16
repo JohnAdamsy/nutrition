@@ -37,13 +37,28 @@ class E_SystemUser
 	 * @Column(name="userRights",type="integer", length=1, nullable=false)
 	 */
 	private $userRights;
+	/**
+	 * @Column(name="company_id",type="integer", length=11, nullable=true)
+	 */
+	private $company_id;
 	
 	/**
-	 * @Column(name="affiliation",type="string", length=45, nullable=true)
+	 * @Column(name="is_active",type="integer", length=11, nullable=true)
 	 */
-	private $affiliation;
+	private $is_active;
+	/**
+	 * @Column(name="activationcode",type="string", length=250, nullable=true)
+	 */
+	private $activationcode;
 	
+	public function getactivationcode() { return $this->activationcode; }
+    public function setactivationcode($activationcode) { $this->activationcode = $activationcode; }
 	
+	public function getis_active() { return $this->is_active; }
+    public function setis_active($is_active) { $this->is_active = $is_active; }
+	
+	public function getcompany_id() { return $this->company_id; }
+    public function setcompany_id($company_id) { $this->company_id = $company_id; }
 	 
     public function getId() { return $this->id; }
     public function setId($id) { $this->id = $id; }
@@ -75,7 +90,5 @@ class E_SystemUser
 	public function getUserRights() { return $this->userRights; }
     public function setUserRights($level) { $this->userRights = $level; }
 	
-	public function getAffiliation() { return $this->affiliation; }
-    public function setAffiliation($affiliation) { $this->affiliation = $affiliation; }
 
 }

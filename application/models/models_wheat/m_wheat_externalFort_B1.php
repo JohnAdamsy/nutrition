@@ -6,7 +6,7 @@ if (!defined('BASEPATH'))
  */
 use application\models\Entities\entities_wheat\e_wheat_externalfort_b1;
 
-class M_Wheat_ExternalFort_B1  extends MY_Model {
+class M_Wheat_ExternalFort_B1 extends MY_Model {
 	var $id, $attr, $frags, $elements, $theIds, $noOfInserts, $batchSize;
 
 	function __construct() {

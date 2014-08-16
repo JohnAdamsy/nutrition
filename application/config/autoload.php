@@ -52,8 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('doctrine','session');
-
+$autoload['libraries'] = array('doctrine','session','javascript','javascript/jquery','Datatables','database','table','email','highcharts');
 
 /*
 | -------------------------------------------------------------------
@@ -64,7 +63,7 @@ $autoload['libraries'] = array('doctrine','session');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url','array');
+$autoload['helper'] = array('url','form','text','date','security','email','html','typography','download','datatables','html','array');
 
 
 /*
@@ -80,7 +79,7 @@ $autoload['helper'] = array('url','array');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('config','mySettings');
 
 
 /*
@@ -109,7 +108,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array('m_systemuser','vehiclemapping','userrole','companytype',"companymodel");
 
 
 /* End of file autoload.php */

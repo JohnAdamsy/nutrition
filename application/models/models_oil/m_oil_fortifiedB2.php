@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
 /**
  *model to IntFortifiedB2 entity
  */
-use application\models\Entities\entities_oil\E_oil_B2;
+use application\models\Entities\entities_oil\e_oil_b2;
 
 class M_Oil_FortifiedB2 extends MY_Model {
 	var $id, $attr, $frags, $elements, $theIds, $noOfInserts, $batchSize,$equipment;
@@ -62,7 +62,7 @@ class M_Oil_FortifiedB2 extends MY_Model {
 		
 			 for($i=1; $i<=$this->noOfInsertsBatch;++$i){
 			 	
-			 $this -> theForm = new \models\Entities\entities_oil\E_Oil_B2(); //create an object of the model
+			 $this -> theForm = new \models\Entities\entities_oil\e_oil_b2(); //create an object of the model
 		      
 			 	$this -> theForm -> setDates($this->input->post('checkupDate'));
 				

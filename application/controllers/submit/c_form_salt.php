@@ -7,39 +7,35 @@ class C_Form_Salt extends MY_Controller{
 	}
 	
 	public function form_internalFort_A1(){
-		$this->load->model('models_salt/M_InternalFortifiedA1');
-		$this->M_InternalFortifiedA1->addRecord();
-		
-		if($this->M_InternalFortifiedA1->response='ok'){
+		$this->load->model('models_salt/m_internalfortifieda1');
+		$this->m_internalfortifieda1->addRecord();		
+		if($this->m_internalfortifieda1->response='ok')
+		{
 			//notify user of success
 			$this->data['form_id']="";
 			$this->data['status'] = "ok";
-			$this->data['form']='<p><b>'.$this->M_InternalFortifiedA1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_InternalFortifiedA1->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'c_front/vehicles/index', 'location')
-			$this->load_template_view();
-			
-			
-		}else{
+			$this->data['form']='<p><b>'.$this->m_internalfortifieda1->rowsInserted.'</b> record(s) submitted successfully in 
+			approximately <b>'.$this->m_internalfortifieda1->executionTime.'</b> seconds.</p>';
+			$this->load_template_view();			
+		}
+		else{
 			//notify user of error/failure
 		}
 		
 	}//close form_internalFort_A1()
 	
 	public function form_internalFort_A2(){
-		$this->load->model('models_salt/M_InternalFortifiedA2');
-		$this->M_InternalFortifiedA2->addRecord();
+		$this->load->model('models_salt/m_internalfortifieda2');
+		$this->m_internalfortifieda2->addRecord();
 		
-		if($this->M_InternalFortifiedA2->response='ok'){
+		if($this->m_internalfortifieda2->response='ok'){
 			//notify user of success
 			$this->data['form_id']="";
-			$this->data['form']='<p><b>'.$this->M_InternalFortifiedA2->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_InternalFortifiedA2->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'c_front/vehicles/index', 'location');
-			$this->load_template_view();
-			
-			
-		}else{
+			$this->data['form']='<p><b>'.$this->m_internalfortifieda2->rowsInserted.'</b> record(s) submitted successfully in 
+			approximately <b>'.$this->m_internalfortifieda2->executionTime.'</b> seconds.</p>';
+			$this->load_template_view();			
+		}
+		else{
 			//notify user of error/failure
 		}
 		
@@ -47,17 +43,14 @@ class C_Form_Salt extends MY_Controller{
 	}//close form_internalFort_A2()
 	
 	public function form_internalFort_B1(){
-		$this->load->model('models_salt/M_InternalFortifiedB1');
-		$this->M_InternalFortifiedB1->addRecord($this->session->userdata('affiliation'));
+     	$this->load->model('models_salt/m_internalfortifiedb1');
+		$this->m_internalfortifiedb1->addRecord($this->session->userdata('affiliation'));
 		
-		if($this->M_InternalFortifiedB1->response='ok'){
+		if($this->m_internalfortifiedb1->response='ok'){
 			//notify user of success
 			$this->data['form_id']="";
-			$this->data['form']='<p><b>'.$this->M_InternalFortifiedB1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_InternalFortifiedB1->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'c_front/vehicles/index', 'location');
+			$this->data['form']='<p><b>'.$this->m_internalfortifiedb1->rowsInserted.'</b> record(s) submitted successfully in approximately <b>'.$this->m_internalfortifiedb1->executionTime.'</b> seconds.</p>';
 			$this->load_template_view();
-			
 			
 		}else{
 			//notify user of error/failure
@@ -67,14 +60,14 @@ class C_Form_Salt extends MY_Controller{
 	}//close form_internalFort_B1()
 	
 	public function form_internalFort_B2(){
-		$this->load->model('models_salt/M_InternalFortifiedB2');
-		$this->M_InternalFortifiedB2->addRecord($this->session->userdata('affiliation'));
+		$this->load->model('models_salt/m_internalfortifiedb2');
+		$this->m_internalfortifiedb2->addRecord($this->session->userdata('affiliation'));
 		
-		if($this->M_InternalFortifiedB2->response=='ok'){
+		if($this->m_internalfortifiedb2->response=='ok'){
 			//notify user of success
 			$this->data['form_id']="";
-			$this->data['form']='<p><b>'.$this->M_InternalFortifiedB2->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_InternalFortifiedB2->executionTime.'</b> seconds.</p>';
+			$this->data['form']='<p><b>'.$this->m_internalfortifiedb2->rowsInserted.'</b> record(s) submitted successfully in 
+			approximately <b>'.$this->m_internalfortifiedb2->executionTime.'</b> seconds.</p>';
 			//redirect(base_url() . 'c_front/vehicles/index', 'location');
 			$this->load_template_view();
 			
@@ -87,14 +80,14 @@ class C_Form_Salt extends MY_Controller{
 	}//close form_internalFort_B2()
 	
 	public function form_internalFort_C1(){
-		$this->load->model('models_salt/M_InternalFortifiedC1');
-		$this->M_InternalFortifiedC1->addRecord($this->session->userdata('affiliation'));
+		$this->load->model('models_salt/m_internalfortifiedc1');
+		$this->m_internalfortifiedc1->addRecord($this->session->userdata('affiliation'));
 		
-		if($this->M_InternalFortifiedC1->response=='ok'){
+		if($this->m_internalfortifiedc1->response=='ok'){
 			//notify user of success
 			$this->data['form_id']="";
-			$this->data['form']='<p><b>'.$this->M_InternalFortifiedC1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_InternalFortifiedC1->executionTime.'</b> seconds.</p>';
+			$this->data['form']='<p><b>'.$this->m_internalfortifiedc1->rowsInserted.'</b> record(s) submitted successfully in 
+			approximately <b>'.$this->m_internalfortifiedc1->executionTime.'</b> seconds.</p>';
 			//redirect(base_url() . 'c_front/vehicles/index', 'location');
 			$this->load_template_view();
 			
@@ -107,14 +100,14 @@ class C_Form_Salt extends MY_Controller{
 	}//close form_internalFort_C1()
 	
 	public function form_externalFort_B1(){
-		$this->load->model('models_salt/M_ExternalFortifiedB1');
-		$this->M_ExternalFortifiedB1->addRecord();
+		$this->load->model('models_salt/m_externalfortifiedb1');
+		$this->m_externalfortifiedb1->addRecord();
 		
-		if($this->M_ExternalFortifiedB1->response=='ok'){
+		if($this->m_externalfortifiedb1->response=='ok'){
 			//notify user of success
 			$this->data['form_id']="";
-			$this->data['form']='<p><b>'.$this->M_ExternalFortifiedB1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_ExternalFortifiedB1->executionTime.'</b> seconds.</p>';
+			$this->data['form']='<p><b>'.$this->m_externalfortifiedb1->rowsInserted.'</b> record(s) submitted successfully in 
+			approximately <b>'.$this->m_externalfortifiedb1->executionTime.'</b> seconds.</p>';
 			//redirect(base_url() . 'c_front/vehicles/index', 'location');
 			$this->load_template_view();
 			
@@ -126,14 +119,14 @@ class C_Form_Salt extends MY_Controller{
 	}//close form_externalFort_B1()
 	
 	public function form_externalFort_B2(){
-		$this->load->model('models_salt/M_ExternalFortifiedB2');
-		$this->M_ExternalFortifiedB2->addRecord($this->session->userdata('affiliation'));
+		$this->load->model('models_salt/m_externalfortifiedb2');
+		$this->m_externalfortifiedb2->addRecord($this->session->userdata('affiliation'));
 		
-		if($this->M_ExternalFortifiedB2->response=='ok'){
+		if($this->m_externalfortifiedb2->response=='ok'){
 			//notify user of success
 			$this->data['form_id']="";
-			$this->data['form']='<p><b>'.$this->M_ExternalFortifiedB2->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_ExternalFortifiedB2->executionTime.'</b> seconds.</p>';
+			$this->data['form']='<p><b>'.$this->m_externalfortifiedb2->rowsInserted.'</b> record(s) submitted successfully in 
+			approximately <b>'.$this->m_externalfortifiedb2->executionTime.'</b> seconds.</p>';
 			//redirect(base_url() . 'c_front/vehicles/index', 'location');
 			$this->load_template_view();
 			
@@ -145,14 +138,14 @@ class C_Form_Salt extends MY_Controller{
 	}//close form_externalFort_B2()
 	
 	public function form_externalFort_B3(){
-		$this->load->model('models_salt/M_ExternalFortifiedB3');
-		$this->M_ExternalFortifiedB3->addRecord($this->session->userdata('affiliation'));
+		$this->load->model('models_salt/m_externalfortifiedb3');
+		$this->m_externalfortifiedb3->addRecord($this->session->userdata('affiliation'));
 		
-		if($this->M_ExternalFortifiedB3->response=='ok'){
+		if($this->m_externalfortifiedb3->response=='ok'){
 			//notify user of success
 			$this->data['form_id']="";
-			$this->data['form']='<p><b>'.$this->M_ExternalFortifiedB3->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_ExternalFortifiedB3->executionTime.'</b> seconds.</p>';
+			$this->data['form']='<p><b>'.$this->m_externalfortifiedb3->rowsInserted.'</b> record(s) submitted successfully in 
+			approximately <b>'.$this->m_externalfortifiedb3->executionTime.'</b> seconds.</p>';
 			//redirect(base_url() . 'c_front/vehicles/index', 'location');
 			$this->load_template_view();
 			
@@ -164,14 +157,14 @@ class C_Form_Salt extends MY_Controller{
 	}//close form_externalFort_B3()
 	
 	public function form_externalIod_B1(){
-		$this->load->model('models_salt/M_ExternalIodizedB1');
-		$this->M_ExternalIodizedB1->addRecord($this->session->userdata('affiliation'));
+		$this->load->model('models_salt/m_externaliodizedb1');
+		$this->m_externaliodizedb1->addRecord($this->session->userdata('affiliation'));
 		
-		if($this->M_ExternalIodizedB1->response=='ok'){
+		if($this->m_externaliodizedb1->response=='ok'){
 			//notify user of success
 			$this->data['form_id']="";
-			$this->data['form']='<p><b>'.$this->M_ExternalIodizedB1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_ExternalIodizedB1->executionTime.'</b> seconds.</p>';
+			$this->data['form']='<p><b>'.$this->m_externaliodizedb1->rowsInserted.'</b> record(s) submitted successfully in 
+			approximately <b>'.$this->m_externaliodizedb1->executionTime.'</b> seconds.</p>';
 			//redirect(base_url() . 'c_front/vehicles/index', 'location');
 			$this->load_template_view();
 			
@@ -183,14 +176,14 @@ class C_Form_Salt extends MY_Controller{
 	}//close form_externalIod_B1()
 	
 		public function form_smallScale_A1(){
-		$this->load->model('models_salt/M_smallScaleA1');
-		$this->M_smallScaleA1->addRecord($this->session->userdata('affiliation'));
+		$this->load->model('models_salt/m_smallscalea1');
+		$this->m_smallscalea1->addRecord($this->session->userdata('affiliation'));
 		
-		if($this->M_smallScaleA1->response=='ok'){
+		if($this->m_smallscalea1->response=='ok'){
 			//notify user of success
 			$this->data['form_id']="";
-			$this->data['form']='<p><b>'.$this->M_smallScaleA1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_smallScaleA1->executionTime.'</b> seconds.</p>';
+			$this->data['form']='<p><b>'.$this->m_smallscalea1->rowsInserted.'</b> record(s) submitted successfully in 
+			approximately <b>'.$this->m_smallscalea1->executionTime.'</b> seconds.</p>';
 			//redirect(base_url() . 'c_front/vehicles/index', 'location');
 			$this->load_template_view();
 			
@@ -202,15 +195,14 @@ class C_Form_Salt extends MY_Controller{
 	}//close form_smallScale_A1()
 	
 		public function form_smallScale_A2(){
-		$this->load->model('models_salt/M_smallScaleA2');
-		$this->M_smallScaleA2->addRecord($this->session->userdata('affiliation'));
+		$this->load->model('models_salt/m_smallscalea2');
+		$this->m_smallscalea2->addRecord($this->session->userdata('affiliation'));
 		
-		if($this->M_smallScaleA2->response=='ok'){
+		if($this->m_smallscalea2->response=='ok'){
 			//notify user of success
 			$this->data['form_id']="";
-			$this->data['form']='<p><b>'.$this->M_smallScaleA2->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_smallScaleA2->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'c_front/vehicles/index', 'location');
+			$this->data['form']='<p><b>'.$this->m_smallscalea2->rowsInserted.'</b> record(s) submitted successfully in 
+			approximately <b>'.$this->m_smallscalea2->executionTime.'</b> seconds.</p>';
 			$this->load_template_view();
 			
 			
@@ -219,4 +211,30 @@ class C_Form_Salt extends MY_Controller{
 		}
 		
 	}//close form_smallScale_A2()
+	
+	public function fortifiedSalt_market($id) 
+	{	
+	    $this -> load -> model('models_salt/m_salt_market');
+		$this -> m_salt_market -> addRecord($this -> session -> userdata('affiliation'));
+		if($this->m_salt_market->response=='ok') 
+		{
+			//notify user of success		
+			if($id==1)	
+			{
+			  $newdata = array('link_id' =>"Market_level_salt_li");
+			  $this -> session -> set_userdata($newdata);		  
+			  redirect('c_redirect/addAnotherEntry');
+			}
+			else
+			{
+				$this->data['form_id'] ="";
+		    	$this->data['form'] = '<p><b>' . $this -> m_salt_market -> rowsInserted . '</b> record(s) submitted successfully in approximately <b>' . $this -> m_salt_market -> executionTime . '</b> seconds.</p>';
+				$this->load_template_view();
+			}			
+		} 
+		else 
+		{
+	//		//notify user of error/failure
+		}
+	}	
 }

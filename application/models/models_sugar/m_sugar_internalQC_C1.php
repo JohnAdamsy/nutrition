@@ -67,7 +67,8 @@ class M_Sugar_InternalQC_C1  extends MY_Model {
 				$this -> theForm -> setPremixUsed1($this->elements[$i]["usedPremix"]);
 				$this -> theForm -> setSugarPremix($this->elements[$i]["sugarPremix"]);
 				$this -> theForm -> setComments($this->elements[$i]["comments"]);
-				$this -> theForm -> setResponsible($this->input->post('personResponsible'));
+				$this -> theForm -> setResponsible($this->input->post('personResponsible'));				
+				//$this -> theForm -> setVitaminA($this->input->post('vitaminA'));
 				
 				$this -> theForm -> setFactoryName($iodizationCentre);
 			

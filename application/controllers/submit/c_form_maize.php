@@ -4,219 +4,102 @@ class C_Form_Maize extends MY_Controller{
 	
 	public function __construct() {
 		parent::__construct();
+		$this->load->model("companyproduction",'cp');
 	}
 	
-	public function form_internalFort_A1(){
-		$this->load->model('models_maize/m_maize_internalfort_a1');
-		$this->m_maize_internalfort_a1->addRecord();
-		
-		if($this->m_maize_internalfort_a1->response='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->m_maize_internalfort_a1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->m_maize_internalfort_a1->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
+public function productionMaize($id) 
+	{
+		if ($this -> input -> post()) 
+		{//check if a post was made
+			if($_POST['maizeFactory'])
+			{
+				$_POST['maizeFactory1']=$_POST['maizeFactory'];
+			}
+			$item_id=($_POST['item_id']!=="")? $_POST['item_id']:"";
 		}
-		
-		
-	}//close form_internalFort_A1()
-	
-	public function form_internalFort_A2(){
-		$this->load->model('models_maize/m_maize_internalfort_a2');
-		$this->m_maize_internalfort_a2->addRecord();
-		
-		if($this->m_maize_internalfort_a2->response='ok'){
-			//notify user of successmodels_maize/m_maize_internalfort_a2
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->m_maize_internalfort_a2->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->m_maize_internalfort_a2->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
+		if($item_id==="")
+		{
+		$rec_count=$this->checkDB("maizeFactory1","maize_productiontable");
 			
-			
-		}else{
-			//notify user of error/failure
+		if($rec_count==0)
+		{		
+		$frm_id="productionMaize";
+	    $this -> load -> model('models_maize/M_Maize_Production');
+		$this -> M_Maize_Production -> addRecord($this -> session -> userdata('affiliation'));
+		if($this->M_Maize_Production->response=='ok') 
+		{
+			//notify user of success		
+			if($id==1)	
+			{		  
+			   redirect('addproductionmaize');
+			}
+			else
+			{
+				/*$msg='Data submitted successfully!!';
+				$newdata = array('update_msg' =>$msg);
+		        $this -> session -> set_userdata($newdata);	*/	
+				redirect('prodMaize');
+			}			
+		} 
+		else 
+		{
+	//		//notify user of error/failure
 		}
+	}
+	else
+	{
+		$newdata = array('update_msg' =>$this->update_e_msg);
+		$this -> session -> set_userdata($newdata);		  
+		redirect('addproductionmaize');
+	}
+	}
+	else
+	{
+		$update_data=array(
+		"opening_balance" =>$_POST["oBal_1"],
+		"qty_delivered" =>$_POST["qtyDel_1"],
+		"qty_rejected" =>$_POST["reject_1"],
+		"supplier" =>$_POST["pSup_1"],
+		"qty_issued" =>$_POST["QI_1"],
+		"closing_balance" =>$_POST["CBAL_1"],
+		"dosage_rate" =>$_POST["DRM_1"],
+		"theoretical_prod" =>$_POST["tProdM_1"],
+		"actual_prod" =>$_POST["aProd_1"],
+		"production_unfort" =>$_POST["prodU_1"],
+		"exp_fort" =>$_POST["fortExp_1"],
+		"exp_unfort" =>$_POST["salexExpUn_1"],
+		"fort_sales" =>$_POST["sales_1"],
+		"edited_by" =>$this -> session -> userdata('email'),
+		"time_edited" =>date('Y-m-d'),
+		);		
+		$result= $this->cp->update("maize_productiontable",$update_data,'MaizeProductionID',$item_id);
+		redirect('prodMaize');	
 		
-		
-	}//close form_internalFort_A2()
-	
-	public function form_internalFort_B1(){
-		$this->load->model('models_maize/m_maize_internalfort_b1');
-		$this->m_maize_internalfort_b1->addRecord($this->session->userdata('affiliation'));
-		
-		if($this->m_maize_internalfort_b1->response='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->m_maize_internalfort_b1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->m_maize_internalfort_b1->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
+	}
+	}
+public function fortifiedMaize_market($id) 
+	{	
+	    $this -> load -> model('models_maize/M_Maize_Market');
+		$this -> M_Maize_Market -> addRecord($this -> session -> userdata('affiliation'));
+		if($this->M_Maize_Market->response=='ok') 
+		{
+			//notify user of success		
+			if($id==1)	
+			{
+			  $newdata = array('link_id' =>"Market_level_maize_li");
+			  $this -> session -> set_userdata($newdata);		  
+			   redirect('c_redirect/addEntry');
+			}
+			else
+			{
+				$this->data['form_id'] ="";
+		    	$this->data['form'] = '<p><b>' . $this -> M_Maize_Market -> rowsInserted . '</b> record(s) submitted successfully in approximately <b>' . $this -> M_Maize_Market -> executionTime . '</b> seconds.</p>';
+				$this->load_template_view();
+			}			
+		} 
+		else 
+		{
+	//		//notify user of error/failure
 		}
-		
-		
-	}//close form_internalFort_B1()
-	
-	public function form_internalFort_B2(){
-		$this->load->model('models_maize/m_maize_internalfort_b2');
-		$this->m_maize_internalfort_b2->addRecord($this->session->userdata('affiliation'));
-		
-		if($this->m_maize_internalfort_b2->response=='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->m_maize_internalfort_b2->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->m_maize_internalfort_b2->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
-		}
-		
-		
-	}//close form_internalFort_B2()
-	
-	public function form_internalFort_C1(){
-		$this->load->model('models_maize/m_maize_internalfort_c1');
-		$this->m_maize_internalfort_c1->addRecord($this->session->userdata('affiliation'));
-		
-		if($this->m_maize_internalfort_c1->response=='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->m_maize_internalfort_c1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->m_maize_internalfort_c1->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
-		}
-		
-		
-	}//close form_internalFort_C1()
-	
-	public function form_externalFort_B1(){
-		$this->load->model('models_maize/m_maize_externalfort_b1');
-		$this->m_maize_externalfort_b1->addRecord();
-		
-		if($this->m_maize_externalfort_b1->response=='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->m_maize_externalfort_b1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->m_maize_externalfort_b1->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
-		}
-		
-	}//close form_externalFort_B1()
-	
-	public function form_externalFort_B2(){
-		$this->load->model('models_maize/m_maize_externalfort_b2');
-		$this->m_maize_externalfort_b2->addRecord($this->session->userdata('affiliation'));
-		
-		if($this->m_maize_externalfort_b2->response=='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->m_maize_externalfort_b2->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->m_maize_externalfort_b2->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
-		}
-		
-	}//close form_externalFort_B2()
-	
-	public function form_externalFort_B3(){
-		$this->load->model('models_maize/m_maize_externalfort_b3');
-		$this->m_maize_externalfort_b3->addRecord($this->session->userdata('affiliation'));
-		
-		if($this->m_maize_externalfort_b3->response=='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->m_maize_externalfort_b3->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->m_maize_externalfort_b3->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
-		}
-		
-	}//close form_externalFort_B3()
-	
-	public function form_externalIod_B1(){
-		$this->load->model('M_ExternalIodizedB1');
-		$this->M_ExternalIodizedB1->addRecord($this->session->userdata('affiliation'));
-		
-		if($this->M_ExternalIodizedB1->response=='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->M_ExternalIodizedB1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_ExternalIodizedB1->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
-		}
-		
-	}//close form_externalIod_B1()
-	
-		public function form_smallScale_A1(){
-		$this->load->model('M_smallScaleA1');
-		$this->M_smallScaleA1->addRecord($this->session->userdata('affiliation'));
-		
-		if($this->M_smallScaleA1->response=='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->M_smallScaleA1->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_smallScaleA1->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
-		}
-		
-	}//close form_smallScale_A1()
-	
-		public function form_smallScale_A2(){
-		$this->load->model('M_smallScaleA2');
-		$this->M_smallScaleA2->addRecord($this->session->userdata('affiliation'));
-		
-		if($this->M_smallScaleA2->response=='ok'){
-			//notify user of success
-			$data['form_id']="";
-			$data['form']='<p><b>'.$this->M_smallScaleA2->rowsInserted.'</b> record(s) submitted successfully in 
-			approximately <b>'.$this->M_smallScaleA2->executionTime.'</b> seconds.</p>';
-			//redirect(base_url() . 'front/vehicles/index', 'location');
-			$this -> load -> view('pages/vehicles/index', $data);
-			
-			
-		}else{
-			//notify user of error/failure
-		}
-		
-	}//close form_smallScale_A2()
+	}	
 }

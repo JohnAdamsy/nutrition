@@ -52,6 +52,10 @@ private $responsible;
 * @Column(name="factoryName", type="string",length=45, nullable=true)
 * */
 private $factoryName;
+/**
+* @Column(name="vitaminA", type="string",length=45, nullable=true)
+* */
+private $vitaminA;
 
 public function getSugar_internalQCC1ID() {
 		return $this -> sugar_internalQCC1ID;
@@ -119,5 +123,11 @@ public function getFactoryName() {
 
 public function setFactoryName($factoryName) { $this -> factoryName = $factoryName;
 }
+//public function getVitaminA() {
+//		return $this -> vitaminA;
+//}
+
+//public function setVitaminA($vitaminA) { $this -> vitaminA = $vitaminA;
+//}
  }
 ?>

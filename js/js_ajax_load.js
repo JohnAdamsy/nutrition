@@ -24,8 +24,7 @@ $().ready(function() {
     function (value) { 
         return Number(value) >= 0;
     }, 'Value must be >= 0');
-    
-    
+	    
    $.validator.addMethod("alphaNumerals", function(value, element) {
         return this.optional(element) || /^[a-z0-9\-]+$/i.test(value);
     }, "Only letters (a-z), numbers(0-9), or dash (-) is allowed.");
@@ -41,7 +40,718 @@ $().ready(function() {
     	zeroAndAbove:true
     	}
     });
-    
+    //new forms added
+
+	/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	
+	$("#fortifiedOil_prod").validate({	
+	// validate  form on keyup and submit
+		rules: {
+			oilFactory: "required",
+			harvestYear: "required",
+			prodMonth: "required",
+			oBal:
+			{
+			required:true,
+			//positiveNumber:true
+			},
+			qtyDel:
+			{
+				required:true,
+				positiveNumber:true
+			},
+			pSup:{
+				required:true,
+				positiveNumber:true
+			},
+			reject:{
+				required:true,
+				positiveNumber:true
+			},
+			QIOF:{
+				required:true,
+				positiveNumber:true
+			},
+			QIM:{
+				required:true,
+				positiveNumber:true
+			},
+			CBAL:{
+				required:true,
+				positiveNumber:true
+			},
+			DROF:{
+				required:true,
+				positiveNumber:true
+			},
+			tProd:{
+				required:true,
+				positiveNumber:true
+			},
+			aProdf:{
+				required:true,
+				positiveNumber:true
+			},
+			aProdo:{
+				required:true,
+				positiveNumber:true
+			},
+			DRM:{
+				required:true,
+				positiveNumber:true
+			},
+			tProdM:{
+				required:true,
+				positiveNumber:true
+			},
+			aProd:{
+				required:true,
+				positiveNumber:true
+			},
+			prodU:{
+				required:true,
+				positiveNumber:true
+			},		
+			'brandname[]': {
+                required: true
+            },	
+			'brandname2[]': {
+                required: true
+            },	
+			brandsWithLogo:"required",
+			brandsWithoutLogo:"required",
+			exportedOil:"required",
+			exportedFats:"required",
+			sales:"required",
+			
+			},
+		messages: {
+			oilFactory: "*Required",
+			harvestYear: {required:"*Required"},
+			prodMonth: {required:"*Required"},
+			oBal:"*Required",
+			qtyDel:{required:"*Required"},
+			pSup:{required:"*Required"},
+			reject:{required:"*Required"},
+			QIOF:"*Required",
+			QIM:"*Required",
+			CBAL:{required:"*Required"},
+			DROF:"*Required",
+			'brandname[]': {required: "*Required"},
+			'brandname2[]': {required: "*Required"},
+			tProd:"*Required",
+			aProdf:{required:"*Required"},
+			aProdo:{required:"*Required"},
+			DRM:{required:"*Required"},
+			tProdM:"*Required",
+			aProd:"*Required",
+			prodU:{required:"*Required"},
+			exportedOil:{required:"*Required"},
+			sales:{required:"*Required"},
+			exportedFats:{required:"*Required"}	,			
+			brandsWithLogo:{required:"*Required"},
+			brandsWithoutLogo:{required:"*Required"}		
+		},
+		errorPlacement: function( label, element ) {
+	if( element.attr( "name" ) === "brandname[]" || element.attr( "name" ) === "brandname2[]") {
+		element.parent().append( label ); // this would append the label after all your checkboxes/labels (so the error-label will be the last element in <div class="controls"> )
+	} else {
+		label.insertAfter( element ); // standard behaviour
+	}
+}
+	});	
+		
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	$("#adddatagain").validate({	
+	// validate  form on keyup and submit
+		rules: {
+			prodName:
+			{
+			required:true,
+			//positiveNumber:true
+			},
+			prodtype:
+			{
+				required:true,
+				//positiveNumber:true
+			},
+			brandname:{
+				required:true,
+			//	positiveNumber:true
+			},
+			production:{
+				required:true,
+				//positiveNumber:true
+			},
+			collectionDate:{
+				required:true,
+				//positiveNumber:true
+			},
+			collectionPlace:{
+				required:true,
+			//	positiveNumber:true
+			},
+			store:{
+				required:true,
+				//positiveNumber:true
+			},
+			expiryDate:{
+				required:true,
+			//	positiveNumber:true
+			},
+			labelled:{
+				required:true,
+			//	positiveNumber:true
+			},
+			sampleAmnt:{
+				required:true,
+			//	positiveNumber:true
+			},
+			analysisDate:{
+				required:true,
+			//	positiveNumber:true
+			},
+			resultA:{
+				required:true,
+			//	positiveNumber:true
+			},
+			resultB:{
+				required:true,
+			//	positiveNumber:true
+			},
+			resultC:{
+				required:true,
+			//	positiveNumber:true
+			}			
+			},
+		messages: {
+			prodName: "*Required",
+			prodtype: {required:"*Required"},
+			brandname: {required:"*Required"},
+			production:"*Required",
+			collectionDate:{required:"*Required"},
+			collectionPlace:{required:"*Required"},
+			store:{required:"*Required"},
+			expiryDate:"*Required",
+			labelled:"*Required",
+			sampleAmnt:{required:"*Required"},
+			analysisDate:"*Required",
+			
+			resultA:"*Required",
+			resultB:{required:"*Required"},
+			resultC:{required:"*Required"}				
+		}
+	});	/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+	$("#adddataco").validate({	
+	// validate  form on keyup and submit
+		rules: {
+			prodName:
+			{
+			required:true,
+			//positiveNumber:true
+			},
+			prodtype:
+			{
+				required:true,
+				//positiveNumber:true
+			},
+			brandname:{
+				required:true,
+			//	positiveNumber:true
+			},
+			collectionDate:{
+				required:true,
+				//positiveNumber:true
+			},
+			collectionPlace:{
+				required:true,
+			//	positiveNumber:true
+			},
+			store:{
+				required:true,
+				//positiveNumber:true
+			},
+			labelled:{
+				required:true,
+			//	positiveNumber:true
+			},
+			sampleAmnt:{
+				required:true,
+			//	positiveNumber:true
+			},
+			analysisDate:{
+				required:true,
+			//	positiveNumber:true
+			},
+			resultA:{
+				required:true,
+			//	positiveNumber:true
+			},
+			resultB:{
+				required:true,
+			//	positiveNumber:true
+			},
+			resultC:{
+				required:true,
+			//	positiveNumber:true
+			}			
+			},
+		messages: {
+			prodName: "*Required",
+			prodtype: {required:"*Required"},
+			brandname: {required:"*Required"},
+			production:"*Required",
+			collectionDate:{required:"*Required"},
+			collectionPlace:{required:"*Required"},
+			store:{required:"*Required"},
+			labelled:"*Required",
+			sampleAmnt:{required:"*Required"},
+			analysisDate:"*Required",
+			
+			resultA:"*Required",
+			resultB:{required:"*Required"},
+			resultC:{required:"*Required"}				
+		}
+	});	/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+	$("#adddatanl").validate({	
+	// validate  form on keyup and submit
+		rules: {
+			prodName:
+			{
+			required:true,
+			//positiveNumber:true
+			},
+			prodtype:
+			{
+				required:true,
+				//positiveNumber:true
+			},
+			brandname:{
+				required:true,
+			//	positiveNumber:true
+			},
+			production:{
+				required:true,
+				//positiveNumber:true
+			},
+			collectionDate:{
+				required:true,
+				//positiveNumber:true
+			},
+			collectionPlace:{
+				required:true,
+			//	positiveNumber:true
+			},
+			store:{
+				required:true,
+				//positiveNumber:true
+			},
+			labDate:{
+				required:true,
+				//positiveNumber:true
+			},
+			expiryDate:{
+				required:true,
+			//	positiveNumber:true
+			},
+			labelled:{
+				required:true,
+			//	positiveNumber:true
+			},
+			analysisDate:{
+				required:true,
+			//	positiveNumber:true
+			},
+			resultA:{
+				required:true,
+			//	positiveNumber:true
+			},
+			resultB:{
+				required:true,
+			//	positiveNumber:true
+			},
+			resultC:{
+				required:true,
+			//	positiveNumber:true
+			}			
+			},
+		messages: {
+			prodName: "*Required",
+			prodtype: {required:"*Required"},
+			brandname: {required:"*Required"},
+			production:"*Required",
+			collectionDate:{required:"*Required"},
+			collectionPlace:{required:"*Required"},
+			store:{required:"*Required"},
+			expiryDate:"*Required",
+			labelled:"*Required",
+			labDate:{required:"*Required"},
+			analysisDate:"*Required",
+			
+			resultA:"*Required",
+			resultB:{required:"*Required"},
+			resultC:{required:"*Required"}				
+		}
+	});	/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	
+	$("#market_level_sugar").validate({	
+	// validate  form on keyup and submit
+		rules: {
+			sampleNo: "required",
+			dateCol: "required",
+			TimeCol: "required",
+			ProdName:
+			{
+			required:true,
+			//positiveNumber:true
+			},
+			ColletiocMethod:
+			{
+				required:true,
+				//positiveNumber:true
+			},
+			collectionReason:{
+				required:true,
+			//	positiveNumber:true
+			},
+			collector:{
+				required:true,
+				//positiveNumber:true
+			},
+			manufacturer:{
+				required:true,
+				//positiveNumber:true
+			},
+			dealer:{
+				required:true,
+			//	positiveNumber:true
+			},
+			sampleSize:{
+				required:true,
+				positiveNumber:true
+			},
+			dateDispatched:{
+				required:true,
+			//	positiveNumber:true
+			},
+			laboratory:{
+				required:true,
+			//	positiveNumber:true
+			},
+			invoiceNo:{
+				required:true,
+			//	positiveNumber:true
+			},
+			remarks:{
+				required:true,
+			//	positiveNumber:true
+			},
+			invoiceDate:{
+				required:true,
+			//	positiveNumber:true
+			},
+			specimenSeal:{
+				required:true,
+			//	positiveNumber:true
+			}			
+			},
+		messages: {
+			sampleNo: "*Required",
+			dateCol: {required:"*Required"},
+			TimeCol: {required:"*Required"},
+			ProdName:"*Required",
+			ColletiocMethod:{required:"*Required"},
+			collectionReason:{required:"*Required"},
+			collector:{required:"*Required"},
+			manufacturer:"*Required",
+			dealer:"*Required",
+			sampleSize:{required:"*Required"},
+			dateDispatched:"*Required",
+			
+			laboratory:"*Required",
+			invoiceNo:{required:"*Required"},
+			remarks:{required:"*Required"},
+			invoiceDate:{required:"*Required"},
+			specimenSeal:"*Required"						
+		}
+	});	
+	/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	
+	$("#market_level_salt").validate({	
+	// validate  form on keyup and submit
+		rules: {
+			sampleNo: "required",
+			dateCol: "required",
+			TimeCol: "required",
+			ProdName:
+			{
+			required:true,
+			//positiveNumber:true
+			},
+			ColletiocMethod:
+			{
+				required:true,
+				//positiveNumber:true
+			},
+			collectionReason:{
+				required:true,
+			//	positiveNumber:true
+			},
+			collector:{
+				required:true,
+				//positiveNumber:true
+			},
+			manufacturer:{
+				required:true,
+				//positiveNumber:true
+			},
+			dealer:{
+				required:true,
+			//	positiveNumber:true
+			},
+			sampleSize:{
+				required:true,
+				positiveNumber:true
+			},
+			dateDispatched:{
+				required:true,
+			//	positiveNumber:true
+			},
+			laboratory:{
+				required:true,
+			//	positiveNumber:true
+			},
+			invoiceNo:{
+				required:true,
+			//	positiveNumber:true
+			},
+			remarks:{
+				required:true,
+			//	positiveNumber:true
+			},
+			invoiceDate:{
+				required:true,
+			//	positiveNumber:true
+			},
+			specimenSeal:{
+				required:true,
+			//	positiveNumber:true
+			}			
+			},
+		messages: {
+			sampleNo: "*Required",
+			dateCol: {required:"*Required"},
+			TimeCol: {required:"*Required"},
+			ProdName:"*Required",
+			ColletiocMethod:{required:"*Required"},
+			collectionReason:{required:"*Required"},
+			collector:{required:"*Required"},
+			manufacturer:"*Required",
+			dealer:"*Required",
+			sampleSize:{required:"*Required"},
+			dateDispatched:"*Required",
+			
+			laboratory:"*Required",
+			invoiceNo:{required:"*Required"},
+			remarks:{required:"*Required"},
+			invoiceDate:{required:"*Required"},
+			specimenSeal:"*Required"						
+		}
+	});	
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	
+	$("#productionWheat").validate({	
+	// validate  form on keyup and submit
+		rules: {
+			wheatFactory: "required",
+			harvestYear: "required",
+			prodMonth: "required",
+			oBal:
+			{
+			required:true,
+			//positiveNumber:true
+			},
+			qtyDel:
+			{
+				required:true,
+				positiveNumber:true
+			},
+			pSup:{
+				required:true,
+				positiveNumber:true
+			},
+			reject:{
+				required:true,
+				positiveNumber:true
+			},
+			sales:{
+				required:true,
+				positiveNumber:true
+			},
+			QI:{
+				required:true,
+				positiveNumber:true
+			},
+			CBAL:{
+				required:true,
+				positiveNumber:true
+			},
+			DRM:{
+				required:true,
+				positiveNumber:true
+			},
+			tProdM:{
+				required:true,
+				positiveNumber:true
+			},
+			aProd:{
+				required:true,
+				positiveNumber:true
+			},
+			prodU:{
+				required:true,
+				positiveNumber:true
+			},	
+			'brandname[]': {
+                required: true
+            },	
+			'brandname2[]': {
+                required: true
+            },	
+			brandsWithLogo:"required",	
+			brandsWithoutLogo:"required",
+			fortExp:"required",
+			salexExpUn:"required",
+			
+			},
+		messages: {
+			wheatFactory: "*Required",
+			harvestYear: {required:"*Required"},
+			prodMonth: {required:"*Required"},
+			oBal:"*Required",
+			qtyDel:{required:"*Required"},
+			pSup:{required:"*Required"},
+			reject:{required:"*Required"},
+			QI:"*Required",			
+			'brandname[]': {required: "*Required"},
+			'brandname2[]': {required: "*Required"},
+			CBAL:{required:"*Required"},
+			DRM:{required:"*Required"},
+			tProdM:"*Required",
+			aProd:"*Required",
+			prodU:{required:"*Required"},
+			fortExp:{required:"*Required"},
+			sales:{required:"*Required"},
+			salexExpUn:{required:"*Required"},
+			brandsWithLogo:{required:"*Required"},
+			brandsWithoutLogo:{required:"*Required"}			
+		},
+		errorPlacement: function( label, element ) {
+	if( element.attr( "name" ) === "brandname[]" || element.attr( "name" ) === "brandname2[]") {
+		element.parent().append( label ); // this would append the label after all your checkboxes/labels (so the error-label will be the last element in <div class="controls"> )
+	} else {
+		label.insertAfter( element ); // standard behaviour
+	}
+}
+	});	
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+	
+	$("#productionMaize").validate({	
+	// validate  form on keyup and submit
+		rules: {
+			maizeFactory: "required",
+			harvestYear: "required",
+			prodMonth: "required",
+			oBal:
+			{
+			required:true,
+			//positiveNumber:true
+			},
+			qtyDel:
+			{
+				required:true,
+				positiveNumber:true
+			},
+			pSup:{
+				required:true,
+				positiveNumber:true
+			},
+			reject:{
+				required:true,
+				positiveNumber:true
+			},
+			QI:{
+				required:true,
+				positiveNumber:true
+			},
+			CBAL:{
+				required:true,
+				positiveNumber:true
+			},
+			sales:{
+				required:true,
+				positiveNumber:true
+			},
+			DRM:{
+				required:true,
+				positiveNumber:true
+			},
+			tProdM:{
+				required:true,
+				positiveNumber:true
+			},
+			aProd:{
+				required:true,
+				positiveNumber:true
+			},
+			prodU:{
+				required:true,
+				positiveNumber:true
+			},	
+			 'brandname[]': {
+                required: true
+            },	
+			 'brandname2[]': {
+                required: true
+            },	
+			brandsWithLogo:"required",	
+			brandsWithoutLogo:"required",
+			fortExp:"required",
+			salexExpUn:"required",
+			
+			},
+		messages: {
+			maizeFactory: "*Required",
+			harvestYear: {required:"*Required"},
+			prodMonth: {required:"*Required"},
+			oBal:"*Required",
+			qtyDel:{required:"*Required"},
+			pSup:{required:"*Required"},
+			reject:{required:"*Required"},
+			QI:"*Required",			
+			'brandname[]': {required: "*Required"},
+			CBAL:{required:"*Required"},
+			DRM:{required:"*Required"},
+			tProdM:"*Required",
+			aProd:"*Required",
+			sales:"*Required",
+			prodU:{required:"*Required"},
+			fortExp:{required:"*Required"},
+			salexExpUn:{required:"*Required"},
+			brandsWithLogo:{required:"*Required"},
+			brandsWithoutLogo:{required:"*Required"}			
+		},
+		errorPlacement: function( label, element ) {
+	if( element.attr( "name" ) === "brandname[]") {
+		element.parent().append( label ); // this would append the label after all your checkboxes/labels (so the error-label will be the last element in <div class="controls"> )
+	} else {
+		label.insertAfter( element ); // standard behaviour
+	}
+}
+	});				
     /*get form id from after ajax request from the user click event*/
    
     //var form_id='#'+$(".form-container").find('form').attr('id');
@@ -989,8 +1699,8 @@ $().ready(function() {
 			}
 			
 	}); /*end of #fortifiedOil_B1*/
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	
-	/*---------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 	$("#fortifiedOil_B2").validate({/*oil module*/
 
 	// validate form on keyup and/or submit
@@ -3223,13 +3933,12 @@ $(document).ready(function() {
 				/*start of datetime functions*/
 				$(function() {
 				var dates= ['#date','#inputDate','.autoDate','.futureDate',
-				'#reportingDate','#fortifiedDate','#checkupDate','#dateC1','#visitDate',
-				'#inspection_date','#supervision_date','#inspector_date','#inspectionsDate',
+				'#reportingDate','#fortifiedDate','#checkupDate','#dateC1','#visitDate','#collectionDate','#analysisDate',
+				'#inspection_date','#supervision_date','#inspector_date','#inspectionsDate','#labDate',
 				'#signatureDate','#supervisorDate','#controlDate','#premixDate',
-				'#inspections_date','#inspectionDate','#roSignature','#ho_signature_date',
-				'#s_signature_date','#externalIodB1_date_rep_signed'];
-				
-				
+				'#inspections_date','#inspectionDate','#roSignature','#ho_signature_date','#expiryDate',
+				'#s_signature_date','#externalIodB1_date_rep_signed'];		
+  				
 				//initialize all datepickers
 				for ( var i=0, iLen=dates.length ; i<iLen ; i++){
 					if(dates[i]=='.futureDate'){
@@ -3239,12 +3948,13 @@ $(document).ready(function() {
 					$(dates[i]).datepicker({changeMonth: true,changeYear: true,dateFormat:"yy-mm-dd",minDate: '-10y', maxDate: "0D"});
 				}
 				}
-				
+				$('#harvestYear').append($('<option/>').val("").html("Select year"));
 				for(i=new Date().getFullYear();i>1990; i--)// year picker
 				{
 				$('#year').append($('<option/>').val(i).html(i));
 				$('#harvestYear').append($('<option/>').val(i).html(i));
 				}
+				
 				}); /*end of datetime functions*/
 				
 				/*----------------------------------------------------------------------------------------------------------------*/

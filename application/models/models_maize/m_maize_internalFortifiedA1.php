@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
 /**
  *model to E_InternalFortifiedA1 entity
  */
-use application\models\Entities\entities_maize\E_Maize_IntFortifiedA1;
+use application\models\Entities\entities_maize\e_maize_intfortifieda1;
 
 class M_Maize_InternalFortifiedA1  extends MY_Model {
 	var $id, $attr, $frags, $elements, $theIds, $noOfInserts, $batchSize;
@@ -58,7 +58,7 @@ class M_Maize_InternalFortifiedA1  extends MY_Model {
 			
 			//get compound manufacturer name by id
 			try{
-			$compoundManufacturer=$this->em->getRepository('models\Entities\E_ManufacturerCompound')
+			$compoundManufacturer=$this->em->getRepository('models\Entities\e_manufacturercompound')
 			                       ->findOneBy( array('manufacturerId'=>$this->input->post('manufacturer')));
 			}catch(exception $ex){
 				//ignore
@@ -67,7 +67,7 @@ class M_Maize_InternalFortifiedA1  extends MY_Model {
 			
 			//get premix type name by id
 			try{
-			$premix=$this->em->getRepository('models\Entities\E_PremixType')
+			$premix=$this->em->getRepository('models\Entities\e_premixtype')
 			                       ->findOneBy( array('productId'=>$this->input->post('productType')));
 			}catch(exception $ex){
 				//ignore

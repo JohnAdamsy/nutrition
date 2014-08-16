@@ -18,7 +18,7 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'development');
+	define('ENVIRONMENT', 'testing');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -123,7 +123,7 @@ if (defined('ENVIRONMENT'))
 	// $assign_to_config['name_of_config_item'] = 'value of config item';
 
 
-
+ini_set('date.timezone', 'Africa/Nairobi');#default server time zone
 // --------------------------------------------------------------------
 // END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
 // --------------------------------------------------------------------
