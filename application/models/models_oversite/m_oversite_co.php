@@ -63,6 +63,8 @@ class M_Oversite_co  extends MY_Model {
 			$this -> theForm -> settype_of_poduct($this->elements[$i]["prodtype"]);
 			$this -> theForm -> setbrand_name($this->elements[$i]["brandname"]);
 			$this -> theForm -> setdate_of_sample_collection($this->elements[$i]["collectionDate"]);
+			$this -> theForm -> setcounty($this->elements[$i]["county"]);
+			$this -> theForm -> setmanufacture_date($this->elements[$i]["manufactureDate"]);
 			$this -> theForm -> setsample_collection_location($this->elements[$i]["collectionPlace"]);
 			$this -> theForm -> setstore_type($this->elements[$i]["store"]);
 			$this -> theForm -> setlabelled_as_fortified($this->elements[$i]["labelled"]);

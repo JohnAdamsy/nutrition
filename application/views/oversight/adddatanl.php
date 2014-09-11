@@ -1,6 +1,4 @@
-<?php
-
-?>
+<?php $counties=counties();?>
 <form name="adddatanl" id="adddatanl" method="post"
       action="<?php echo base_url() ?>submit/c_form_oversite/adddatanl/0" class="form-horizontal">
   <input name="item_id" type="hidden" value="<?php echo (isset($item_id))? $item_id:"";?>" />
@@ -17,9 +15,9 @@
                   <label>Type of product
                 <select name="prodtype" id="prodtype" style="width: 99% !important; height: 30px;margin-top: 3px">
                   <option value="" <?php if (!(strcmp("", $details[0]->type_of_poduct))) {echo "selected=\"selected\"";} ?>>Select one</option>
-                  <option value="Wheat Flour" <?php if (!(strcmp("Wheat Flour", $details[0]->type_of_poduct))) {echo "selected=\"selected\"";} ?>>Wheat Flour</option>
-                  <option value="Maize Flour" <?php if (!(strcmp("Maize Flour", $details[0]->type_of_poduct))) {echo "selected=\"selected\"";} ?>>Maize Flour</option>
-                  <option value="Edible Fats / Oils" <?php if (!(strcmp("Edible Fats / Oils", $details[0]->type_of_poduct))) {echo "selected=\"selected\"";} ?>>Edible Fats / Oils</option>
+                 <?php foreach(product_types() as $key){?>
+                    <option value="<?=$key?>" <?php if (!(strcmp($key, $details[0]->type_of_poduct))) {echo "selected=\"selected\"";} ?>><?=$key?></option>
+                    <?php }?>
                 </select>
                 </label>
                 
@@ -47,6 +45,16 @@
                 </label>
                 </div>  
                 <div class="span5"><br />
+                <label>County
+                  <select name="county" id="county" style="width: 99% !important; height: 30px;margin-top: 3px">
+                    <option value="" <?php if (!(strcmp("", $details[0]->county))) {echo "selected=\"selected\"";} ?>>Select one</option>
+                    <?php foreach($counties as $key){?>
+                    <option value="<?=$key?>" <?php if (!(strcmp($key, $details[0]->county))) {echo "selected=\"selected\"";} ?>><?=$key?></option>
+                    <?php }?>
+                 </select>
+                </label>
+                </div> 
+                <div class="span5"><br />
                 <label>Sample collection site
                   <input name="collectionPlace" id="collectionPlace" type="text" value="<?=$details[0]->sample_collection_location;?>" style="width: 98% !important; height: 25px;"/>
                 </label>
@@ -60,7 +68,12 @@
                 <label>Date of sample reception in the laboratory
                  <input name="labDate" id="labDate" type="text" value="<?=$details[0]->date_received_lab;?>" style="width: 98% !important; height: 25px;"/>
                 </label>
-                </div>  
+                </div> 
+                <div class="span5"><br />
+                <label>Date of manufacture
+                 <input name="manufactureDate" id="manufactureDate" type="text" value="<?=$details[0]->manufacture_date;?>" style="width: 98% !important; height: 25px;"/>
+                </label>
+                </div>                 
                  <div class="span5"><br />
                 <label>Sample expiry date
                   <input name="expiryDate" id="expiryDate" type="text" value="<?=$details[0]->expiry_date;?>" style="width: 98% !important; height: 25px;"/>
@@ -81,17 +94,17 @@
                 </label>
                 </div> 
                   <div class="span2"><br />
-                <label>icheck result 1
+                <label>Result 1
                   <input name="resultA" id="resultA" type="text" value="<?=$details[0]->result_a;?>" style="width: 98% !important; height: 25px;"/>
                 </label>
                 </div> 
                  <div class="span2"><br />
-                <label>icheck result 2
+                <label>Result 2
                   <input name="resultB" id="resultB" type="text" value="<?=$details[0]->result_b;?>" style="width: 98% !important; height: 25px;"/>
                 </label>
                 </div> 
                   <div class="span2"><br />
-                <label>icheck result 3
+                <label>Result 3
                   <input name="resultC" id="resultC" type="text" value="<?=$details[0]->result_c;?>" style="width: 98% !important; height: 25px;"/>
                 </label>
                 </div> 

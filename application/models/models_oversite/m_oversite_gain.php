@@ -62,6 +62,8 @@ class M_Oversite_gain  extends MY_Model {
 			$this -> theForm -> setbrand_name($this->elements[$i]["brandname"]);
 			$this -> theForm -> setproduction($this->elements[$i]["production"]);
 			$this -> theForm -> setdate_of_sample_collection($this->elements[$i]["collectionDate"]);
+			$this -> theForm -> setcounty($this->elements[$i]["county"]);
+			$this -> theForm -> setmanufacture_date($this->elements[$i]["manufactureDate"]);
 			$this -> theForm -> setsample_collection_location($this->elements[$i]["collectionPlace"]);
 			$this -> theForm -> setstore_type($this->elements[$i]["store"]);
 			$this -> theForm -> setdate_received_lab("0000-00-00");

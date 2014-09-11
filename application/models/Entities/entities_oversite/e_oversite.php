@@ -43,10 +43,19 @@ private $brand_name;
 private $production;
 
 /**
+* @Column(name="manufacture_date", type="string",length=50, nullable=true)
+* */
+private $manufacture_date;
+
+/**
 * @Column(name="date_of_sample_collection", type="string",length=50, nullable=true)
 * */
 private $date_of_sample_collection;
 
+/**
+* @Column(name="county", type="string",length=250, nullable=true)
+* */
+private $county;
 /**
 * @Column(name="sample_collection_location", type="string",length=250, nullable=true)
 * */
@@ -188,6 +197,24 @@ public function getdate_of_sample_collection()
 public function setdate_of_sample_collection($date_of_sample_collection) 
 { 
 $this -> date_of_sample_collection= $date_of_sample_collection;
+}
+//========================================================================================
+public function getcounty() 
+{
+		return $this -> county;
+}
+public function setcounty($county) 
+{ 
+$this -> county = $county;
+}
+//========================================================================================
+public function getmanufacture_date() 
+{
+		return $this -> manufacture_date;
+}
+public function setmanufacture_date($manufacture_date) 
+{ 
+$this -> manufacture_date = $manufacture_date;
 }
 //========================================================================================
 public function getsample_collection_location() 

@@ -21,7 +21,7 @@
         <h4 class="blue">Division of Family Health, Nutrition &amp; Dietetics Unit</h4>
     </div>
 </div>
-
+<script src="<?php echo base_url()?>js/js_libraries.js"></script>
 <script src="<?php echo base_url();?>assets/js/jquery.validate.js"></script>
 <script>
 $(document).ready(function () {

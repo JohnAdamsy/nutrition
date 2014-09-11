@@ -127,7 +127,7 @@ class C_Oversight extends MY_Controller {
              $this->table->set_template($tmpl);
 			 		 
 			
-			 $this->table->set_heading('Producer/ Company','Product Type','Brand Name','Production','Sample Collection Date','Sample Collection Site','Store Type','Date Received in Laboratory','SampleExpiry Date','Fortification Logo','Sample Amount Taken','Analysis Date','iCheck result 1','iCheck result 2','iCheck result 3');
+			 $this->table->set_heading('Producer/ Company','Product Type','Brand Name','Production','Sample Collection Date','Sample Collection Site','Store Type','Date Received in Laboratory','SampleExpiry Date','Fortification Logo','Sample Amount Collected','Analysis Date','Result');
 			
 			
 	         $data['content']="Vehicles";
@@ -141,9 +141,11 @@ class C_Oversight extends MY_Controller {
         {
 		$category = trim($this -> session -> userdata('vehicle'));
 		
-			$this->datatables->select('item_id,company_id,company_type,producer_name,type_of_poduct,brand_name,production,date_of_sample_collection,sample_collection_location,store_type,date_received_lab,expiry_date,labelled_as_fortified,sample_amount_taken,date_of_analysis,result_a,result_b,result_c');
+			$this->datatables->select('item_id,company_id,company_type,producer_name,type_of_poduct,brand_name,production,date_of_sample_collection,sample_collection_location,store_type,date_received_lab,expiry_date,labelled_as_fortified,sample_amount_taken,date_of_analysis,average_result');
 			$this->datatables->unset_column('item_id');
 			$this->datatables->unset_column('company_id');
+			
+			$this->datatables->join('mkt_results', 'mkt_results.id = market_samples_table.item_id', 'left');			    
 			$this->datatables->unset_column('company_type');
 			$this->datatables->edit_column('sample_amount_taken', '$1', 'format_values(sample_amount_taken)');
 		    $this->datatables->edit_column('date_received_lab', '$1', 'format_disp_date(date_received_lab)');	
@@ -197,18 +199,18 @@ class C_Oversight extends MY_Controller {
 			{
 			
              $data['content_page'] = 'marketdata/gain';	
-			 $this->table->set_heading('Producer/ Company','Product Type','Brand Name','Production','Sample Collection Date','Sample Collection Site','Store Type','Sample Expiry Date','Fortification Logo','Sample Amount Taken','Analysis Date','iCheck result 1','iCheck result 2','iCheck result 3','Actions');
+			 $this->table->set_heading('Producer/ Company','Product Type','Brand Name','Production','Sample Collection Date','Sample Collection Site','Store Type','Sample Expiry Date','Fortification Logo','Sample Amount Collected','Analysis Date','Result','Actions');
 			}
 			else if($aff==="CONSUMER ORGANIZATION")
 			{
 				
              $data['content_page'] = 'marketdata/c_o';
-			 $this->table->set_heading('Producer/ Company','Product Type','Brand Name','Sample Collection Date','Sample Collection Site','Store Type','Fortification Logo','Sample Amount Taken','Analysis Date','iCheck result 1','iCheck result 2','iCheck result 3','Actions');
+			 $this->table->set_heading('Producer/ Company','Product Type','Brand Name','Sample Collection Date','Sample Collection Site','Store Type','Fortification Logo','Sample Amount Collected','Analysis Date','Result','Actions');
 			}
 			else if($aff==="NATIONAL PUBLIC HEALTH LABORATORY SERVICES")
 			{
              $data['content_page'] = 'marketdata/n_l';
-			 $this->table->set_heading('Producer/ Company','Product Type','Brand Name','Production','Sample Collection Date','Sample Collection Site','Date Received in Laboratory','Sample Expiry Date','Fortification Logo','Analysis Date','iCheck result 1','iCheck result 2','iCheck result 3','Actions');
+			 $this->table->set_heading('Producer/ Company','Product Type','Brand Name','Production','Sample Collection Date','Sample Collection Site','Date Received in Laboratory','Sample Expiry Date','Fortification Logo','Analysis Date','Result','Actions');
 			}
 			
 			
@@ -223,15 +225,18 @@ class C_Oversight extends MY_Controller {
         {
 		$aff = trim($this -> session -> userdata('vehicle'));
 		
-		$this->datatables->select('item_id,company_id,company_type,producer_name,type_of_poduct,brand_name,production,date_of_sample_collection,sample_collection_location,store_type,date_received_lab,expiry_date,labelled_as_fortified,sample_amount_taken,date_of_analysis,result_a,result_b,result_c');
+		$this->datatables->select('item_id,company_id,company_type,producer_name,type_of_poduct,brand_name,production,date_of_sample_collection,sample_collection_location,store_type,date_received_lab,expiry_date,labelled_as_fortified,sample_amount_taken,date_of_analysis,average_result');
 		
 		    $this->datatables->edit_column('sample_amount_taken', '$1', 'format_values(sample_amount_taken)');
 		    $this->datatables->edit_column('date_received_lab', '$1', 'format_disp_date(date_received_lab)');	
 		    $this->datatables->edit_column('date_of_sample_collection', '$1', 'format_disp_date(date_of_sample_collection)');
 		    $this->datatables->edit_column('expiry_date', '$1', 'format_disp_date(expiry_date)');
-		    $this->datatables->edit_column('date_of_analysis', '$1', 'format_disp_date(date_of_analysis)');			    
+		    $this->datatables->edit_column('date_of_analysis', '$1', 'format_disp_date(date_of_analysis)');
+				
+			$this->datatables->join('mkt_results', 'mkt_results.id = market_samples_table.item_id', 'left');			    
 			$this->datatables->where('company_id', $id);
 		
+			
 			if($aff==="GAIN")
 			{
 				$this->datatables->unset_column('date_received_lab');
