@@ -30,3 +30,6 @@ ERROR - 2014-09-11 00:33:45 --> Severity: 8192  --> mysql_pconnect(): The mysql 
 ERROR - 2014-09-11 00:33:50 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /opt/lampp/htdocs/nutrition/system/database/drivers/mysql/mysql_driver.php 91
 ERROR - 2014-09-11 00:33:55 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /opt/lampp/htdocs/nutrition/system/database/drivers/mysql/mysql_driver.php 91
 ERROR - 2014-09-11 00:34:10 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /opt/lampp/htdocs/nutrition/system/database/drivers/mysql/mysql_driver.php 91
+ERROR - 2014-09-11 00:55:54 --> Severity: 8192  --> mysql_pconnect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead /opt/lampp/htdocs/nutrition/system/database/drivers/mysql/mysql_driver.php 91
+ERROR - 2014-09-11 07:08:57 --> 404 Page Not Found --> assets
+ERROR - 2014-09-11 07:08:57 --> ErrorException [ 1 ]: The page you requested was not found. ~  [ 0 ]
